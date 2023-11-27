@@ -1,5 +1,9 @@
 *.o
+
 tt
+
 test_generation_terrains
 curiosity-perf
+test_generation_terrains
+
 .DS_Store
