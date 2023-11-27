@@ -126,8 +126,7 @@ int main(int argc, char **argv) {
 		break;
 		}
 	}
-  printf("invalide: %f\n", 1 - (double) valide / (double) N);
-  printf("%d\n", valide);
+  printf("invalide: %f\n", 1 - (float) valide / (float) N);
   printf("pas: %f\n", (float) totalePas / (float) N);
   return 0;
 }
