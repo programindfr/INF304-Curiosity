@@ -40,8 +40,7 @@ resultat_deplacement avancer_envt(Environnement *envt) {
   } else {
     // À corriger : il devrait y avoir une fonction pour cela dans le
     // paquetage terrain
-    Case case_devant = envt->t.tab[x][y];
-    switch (case_devant) {
+    switch (envt->t.tab[x][y]) {
     case LIBRE:
       avancer(&(envt->r));
       return OK_DEPL;
@@ -144,18 +143,7 @@ int mesure_envt(Environnement *envt, int d) {
     return 3;
   }
 
-  // À corriger : il devrait y avoir une fonction dans le paquetage
-  // terrain pour tester le type de case
-  switch (envt->t.tab[mx][my]) {
-  case LIBRE:
-    return 0;
-  case EAU:
-    return 1;
-  case ROCHER:
-    return 2;
-  }
-  // Ne devrait pas arriver
-  return 3;
+  return envt->t.tab[mx][my];
 }
 
 /* Afficher le terrain avec la position et l'orientation du robot */
