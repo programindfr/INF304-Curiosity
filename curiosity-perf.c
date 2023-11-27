@@ -29,7 +29,7 @@ int nb_cases_occupees(Terrain *T) {
 
 int main(int argc, char **argv) {
   int N, i, l, h, graine, nb;
-  float dObst, d;
+  float dObst;
   FILE* resFile;
   Terrain T;
 
@@ -80,7 +80,7 @@ int main(int argc, char **argv) {
 	{
 		/* Initialisation de l'environnement : lecture du terrain,
 		 initialisation de la position du robot */
-		d = generation_aleatoire(&T, l, h, dObst);
+		generation_aleatoire(&T, l, h, dObst);
 		int x = l/2, y = h/2;
 		init_robot(&(envt.r), x, y, Est);
 		envt.t = T;
