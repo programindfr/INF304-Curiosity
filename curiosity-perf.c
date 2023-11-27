@@ -78,6 +78,8 @@ int main(int argc, char **argv) {
 
 	for (i = 0; i < N; i++)
 	{
+		printf("\e[1KProgression : %i%%\r", 1 + (int) (100 * (float) i / (float) N));
+
 		/* Initialisation de l'environnement : lecture du terrain,
 		 initialisation de la position du robot */
 		generation_aleatoire(&T, l, h, dObst);
@@ -93,7 +95,7 @@ int main(int argc, char **argv) {
 			res = exec_pas(&prog, &envt, &etat);
 			pas++;
 			/* Affichage du terrain et du robot */
-			afficher_envt(&envt);
+			//afficher_envt(&envt);
 		} while (res == OK_ROBOT && pas < nb);
     totalePas += pas;
 
@@ -126,7 +128,7 @@ int main(int argc, char **argv) {
 		break;
 		}
 	}
-  printf("invalide: %i%%\n", (int) (100 * (1 - (float) valide / (float) N)));
-  printf("pas: %f\n", (float) totalePas / (float) N);
+  printf("\nInvalide : %i%%\n", (int) (100 * (1 - (float) valide / (float) N)));
+  printf("Pas : %f\n", (float) totalePas / (float) N);
   return 0;
 }
