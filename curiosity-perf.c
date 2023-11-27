@@ -73,6 +73,8 @@ int main(int argc, char **argv) {
   Programme prog;
   etat_inter etat;
   resultat_inter res;
+  int valide = 0;
+  int totalePas = 0;
 
 	for (i = 0; i < N; i++)
 	{
@@ -93,11 +95,13 @@ int main(int argc, char **argv) {
 			/* Affichage du terrain et du robot */
 			afficher_envt(&envt);
 		} while (res == OK_ROBOT && pas < nb);
+    totalePas += pas;
 
 		/* Affichage du résultat */
 		switch (res) {
 		case SORTIE_ROBOT:
 		fprintf(resFile, "%d\n", pas);
+    valide++;
 		break;
 		
 		case OK_ROBOT:
@@ -122,5 +126,8 @@ int main(int argc, char **argv) {
 		break;
 		}
 	}
+  printf("invalide: %f\n", 1 - (double) valide / (double) N);
+  printf("%d\n", valide);
+  printf("pas: %f\n", (float) totalePas / (float) N);
   return 0;
 }
