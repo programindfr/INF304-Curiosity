@@ -97,18 +97,18 @@ int main(int argc, char **argv) {
 		/* Affichage du résultat */
 		switch (res) {
 		case SORTIE_ROBOT:
-		fprintf(resFile, "Pas: %d\n", pas);
+		fprintf(resFile, "%d\n", pas);
 		break;
 		
 		case OK_ROBOT:
 		case ARRET_ROBOT:
-		fprintf(resFile, "Arret: %d\n", -1);
+		fprintf(resFile, "%d\n", -1);
 		break;
 		case PLOUF_ROBOT:
-		fprintf(resFile, "Plouf: %d\n", -2);
+		fprintf(resFile, "%d\n", -2);
 		break;
 		case CRASH_ROBOT:
-		fprintf(resFile, "Crash: %d\n", -3);
+		fprintf(resFile, "%d\n", -3);
 		break;
 		
 		case ERREUR_PILE_VIDE:
