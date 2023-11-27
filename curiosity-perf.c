@@ -71,7 +71,6 @@ int main(int argc, char **argv) {
 
   Environnement envt;
   Programme prog;
-  erreur_programme errp;
   etat_inter etat;
   resultat_inter res;
 
@@ -82,11 +81,8 @@ int main(int argc, char **argv) {
 		d = generation_aleatoire(&T, l, h, dObst);
 		int x = l/2, y = h/2;
 		init_robot(&(envt.r), x, y, Est);
-		envt.t = &T;
-
-		/* Lecture du programme */
-		errp = lire_programme(&prog, argv[1]);
-		gestion_erreur_programme(errp);
+		envt.t = T;
+		lire_programme(&prog, argv[1]);
 
 		/* Initialisation de l'état */
 		int pas = 0;
@@ -98,23 +94,21 @@ int main(int argc, char **argv) {
 			afficher_envt(&envt);
 		} while (res == OK_ROBOT && pas < nb);
 
-		int ires;
-
 		/* Affichage du résultat */
 		switch (res) {
 		case SORTIE_ROBOT:
-		fprintf(resFile, "pas: %d", pas);
+		fprintf(resFile, "Pas: %d\n", pas);
 		break;
 		
 		case OK_ROBOT:
 		case ARRET_ROBOT:
-		fprintf(resFile, "pas: %d", -1);
+		fprintf(resFile, "Arret: %d\n", -1);
 		break;
 		case PLOUF_ROBOT:
-		fprintf(resFile, "pas: %d", -2);
+		fprintf(resFile, "Plouf: %d\n", -2);
 		break;
 		case CRASH_ROBOT:
-		fprintf(resFile, "pas: %d", -3);
+		fprintf(resFile, "Crash: %d\n", -3);
 		break;
 		
 		case ERREUR_PILE_VIDE:

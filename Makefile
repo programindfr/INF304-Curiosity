@@ -71,7 +71,8 @@ curiosity-test%: curiosity-test.o environnement.o programme.o interprete%.o \
 test_generation_terrains: test_generation_terrains.o generation_terrains.o terrain.o robot.o
 	$(CC) $^ -o $@
 
-curiosity-perf: curiosity-perf.o generation_terrains.o terrain.o robot.o
+curiosity-perf: curiosity-perf.o generation_terrains.o terrain.o robot.o \
+	environnement.o interprete.o type_pile.o programme.o
 	$(CC) $^ -o $@
 
 clean:
