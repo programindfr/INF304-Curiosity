@@ -1,6 +1,6 @@
 CC = clang -Wall
 
-PROGRAMMES = test_terrain test_robot
+PROGRAMMES = test_terrain test_robot robot_terrain
 
 all: $(PROGRAMMES)
 
