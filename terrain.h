@@ -1,6 +1,7 @@
 #ifndef _TERRAIN_H_
 #define _TERRAIN_H_
 #include <stdio.h>
+#include <stdbool.h>
 
 typedef enum { LIBRE = 0, EAU, ROCHER } Case;
 
@@ -59,5 +60,7 @@ void afficher_terrain(Terrain *t);
    x et y contiennent les coordonnées du robot
    Le terrain est écrit au format lisible par lire_terrain */
 void ecrire_terrain(FILE *f, Terrain *t, int x, int y);
+
+void gestion_erreur_terrain(erreur_terrain e, bool exit1);
 
 #endif

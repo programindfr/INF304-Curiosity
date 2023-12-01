@@ -1,7 +1,9 @@
 #include "terrain.h"
 #include "robot.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 erreur_terrain
 lire_terrain(FILE *f, Terrain *t, int *x, int *y)
@@ -186,4 +188,35 @@ ecrire_terrain(FILE *f, Terrain *t, int x, int y)
         }
         fprintf(f, "\n");
     }
+}
+
+void gestion_erreur_terrain(erreur_terrain e, bool exit1) {
+    switch (e) {
+    case OK:
+        return;
+    case ERREUR_FICHIER:
+        fprintf(stderr, "1 Erreur terrain : erreur d'ouverture du fichier\n");
+        break;
+    case ERREUR_LARGEUR_SUP:
+        fprintf(stderr, "2 Erreur terrain : largeur supérieure\n");
+        break;
+    case ERREUR_HAUTEUR_SUP:
+        fprintf(stderr, "3 Erreur terrain : hauteur supérieure\n");
+        break;
+    case ERREUR_LARGEUR_INF:
+        fprintf(stderr, "4 Erreur terrain : largeur inférieure\n");
+        break;
+    case ERREUR_HAUTEUR_INF:
+        fprintf(stderr, "5 Erreur terrain : hauteur inférieure\n");
+        break;
+    case ERREUR_DIM:
+        fprintf(stderr, "6 Erreur terrain : dimensions\n");
+        break;
+    case ERREUR_CHAR:
+        fprintf(stderr, "7 Erreur terrain : caractère inconnu\n");
+        break;
+    case ERREUR_ROBOT:
+        fprintf(stderr, "8 Erreur terrain : pas ou trop de robots\n");
+    }
+    if (exit1) exit(1);
 }

@@ -3,29 +3,6 @@
 #include <stdbool.h>
 #include <string.h>
 
-char * print_terrain_err(erreur_terrain e) {
-  switch (e) {
-    case OK:
-      return "0 Ok";
-    case ERREUR_FICHIER:
-      return "1 Erreur fichier";
-    case ERREUR_LARGEUR_SUP:
-      return "2 Erreur largeur supérieure";
-    case ERREUR_HAUTEUR_SUP:
-      return "3 Erreur hauteur supérieure";
-    case ERREUR_LARGEUR_INF:
-      return "4 Erreur largeur inférieure";
-    case ERREUR_HAUTEUR_INF:
-      return "5 Erreur hauteur inférieure";
-    case ERREUR_DIM:
-      return "6 Erreur dimensions";
-    case ERREUR_CHAR:
-      return "7 Erreur caractère inconnu";
-    case ERREUR_ROBOT:
-      return "8 Erreur pas ou trop de robots";
-  }
-}
-
 int main(int argc, char ** argv) {
   FILE * f;
   Terrain t;
@@ -50,7 +27,7 @@ int main(int argc, char ** argv) {
     printf(">> %s\n", buf);
     f = fopen(buf, "r");
     err = lire_terrain(f, &t, &x, &y);
-    printf("%s\n", print_terrain_err(err));
+    gestion_erreur_terrain(err, false);
     fclose(f);
   }
 }

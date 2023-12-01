@@ -1,5 +1,6 @@
 #include "programme.h"
 #include "type_pile.h"
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -198,4 +199,37 @@ erreur_programme lire_programme(Programme *prog, char *nom_fichier) {
   }
 
   return res;
+}
+
+void affichage_position_programme(erreur_programme e) {
+  int i;
+  printf("Ligne %d, colonne %d :\n", e.num_ligne, e.num_colonne);
+  printf("%s\n", e.ligne);
+  /* Impression de e.num_colonne-1 espaces */
+  for (i = 1; i < e.num_colonne; i++) {
+    printf(" ");
+  }
+  /* Impression d'un curseur de position */
+  printf("^\n");
+}
+
+void gestion_erreur_programme(erreur_programme e, bool exit2) {
+  switch (e.type_err) {
+  case OK_PROGRAMME:
+    return;
+  case ERREUR_FICHIER_PROGRAMME:
+    fprintf(stderr, "1 Erreur programme : erreur d'ouverture du fichier\n");
+    break;
+  case ERREUR_BLOC_NON_FERME:
+    fprintf(stderr, "2 Erreur programme : bloc non fermé\n");
+    break;
+  case ERREUR_FERMETURE_BLOC_EXCEDENTAIRE:
+    fprintf(stderr, "3 Erreur programme : fermeture de bloc excédentaire\n");
+    affichage_position_programme(e);
+    break;
+  case ERREUR_COMMANDE_INCORRECTE:
+    fprintf(stderr, "4 Erreur programme : commande incorrecte\n");
+    affichage_position_programme(e);
+  }
+  if (exit2) exit(2);
 }

@@ -1,6 +1,8 @@
 #ifndef _PROGRAMME_H_
 #define _PROGRAMME_H_
 
+#include <stdbool.h>
+
 /* Taille maximum d'un programme */
 #define PROG_TAILLE_MAX 10000
 
@@ -43,7 +45,7 @@ typedef struct {
 
 /* Erreurs de lecture d'un programme */
 typedef enum {
-  OK_PROGRAMME,
+  OK_PROGRAMME = 0,
   ERREUR_FICHIER_PROGRAMME,
   ERREUR_BLOC_NON_FERME,
   ERREUR_FERMETURE_BLOC_EXCEDENTAIRE,
@@ -58,5 +60,9 @@ typedef struct {
 
 /* Lecture d'un programme prog dans le fichier nom_fichier */
 erreur_programme lire_programme(Programme *prog, char *nom_fichier);
+
+void affichage_position_programme(erreur_programme e);
+
+void gestion_erreur_programme(erreur_programme e, bool exit2);
 
 #endif
