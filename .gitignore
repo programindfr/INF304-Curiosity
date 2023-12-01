@@ -3,6 +3,7 @@
 tt
 
 test_terrain
+test_robot
 test_generation_terrains
 curiosity-perf
 test_generation_terrains
