@@ -6,23 +6,23 @@
 char * print_terrain_err(erreur_terrain e) {
   switch (e) {
     case OK:
-      return "Ok";
+      return "0 Ok";
     case ERREUR_FICHIER:
-      return "Erreur fichier";
+      return "1 Erreur fichier";
     case ERREUR_LARGEUR_SUP:
-      return "Erreur largeur supérieure";
+      return "2 Erreur largeur supérieure";
     case ERREUR_HAUTEUR_SUP:
-      return "Erreur hauteur supérieure";
+      return "3 Erreur hauteur supérieure";
     case ERREUR_LARGEUR_INF:
-      return "Erreur largeur inférieure";
+      return "4 Erreur largeur inférieure";
     case ERREUR_HAUTEUR_INF:
-      return "Erreur hauteur inférieure";
+      return "5 Erreur hauteur inférieure";
     case ERREUR_DIM:
-      return "Erreur dimensions";
+      return "6 Erreur dimensions";
     case ERREUR_CHAR:
-      return "Erreur caractère inconnu";
+      return "7 Erreur caractère inconnu";
     case ERREUR_ROBOT:
-      return "Erreur pas ou trop de robots";
+      return "8 Erreur pas ou trop de robots";
   }
 }
 
