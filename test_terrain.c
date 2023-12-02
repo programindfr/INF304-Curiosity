@@ -28,6 +28,7 @@ int main(int argc, char ** argv) {
     f = fopen(buf, "r");
     err = lire_terrain(f, &t, &x, &y);
     gestion_erreur_terrain(err, false);
+    if (!err) printf("0 Ok\n");
     fclose(f);
   }
 }
