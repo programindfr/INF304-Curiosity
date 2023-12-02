@@ -1,6 +1,6 @@
-CC = clang -Wall
+CC = gcc -Wall
 
-PROGRAMMES = test_terrain test_robot robot_terrain curiosity-test
+PROGRAMMES = test_terrain test_generation_terrains test_robot robot_terrain curiosity-test
 
 all: $(PROGRAMMES)
 
