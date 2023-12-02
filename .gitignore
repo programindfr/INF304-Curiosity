@@ -5,6 +5,6 @@ tt
 test_terrain
 test_robot
 robot_terrain
-curiosity-test
+curiosity-test*
 
 .DS_Store
