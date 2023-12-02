@@ -6,5 +6,6 @@ test_terrain
 test_robot
 robot_terrain
 curiosity-test*
+test_generation_terrains
 
 .DS_Store
