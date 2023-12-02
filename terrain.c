@@ -193,7 +193,8 @@ ecrire_terrain(FILE *f, Terrain *t, int x, int y)
 void gestion_erreur_terrain(erreur_terrain e, bool exit1) {
     switch (e) {
     case OK:
-        return;
+        printf("0\n");
+        break;
     case ERREUR_FICHIER:
         fprintf(stderr, "1 Erreur terrain : erreur d'ouverture du fichier\n");
         break;
