@@ -89,13 +89,13 @@ int main(int argc, char * argv[]) {
 			&& (x != envt.r.x
 				|| y != envt.r.y
 				|| o != orientation(envt.r.o)))
-			printf("Les coordonnées et orientation (%i, %i, %c) "
+			printf("2 Les coordonnées et orientation (%i, %i, %c) "
 				   "ne sont pas ceux attendus (%i, %i, %c).\n",
 				   x, y, o, envt.r.x, envt.r.y, orientation(envt.r.o));
 		else
-			printf("Le test s'est déroulé correctement.\n");
+			printf("0 Le test s'est déroulé correctement.\n");
 	} else
-		printf("Le code de retour (%c) n'est pas celui attendu (%c).\n", code(res), e);
+		printf("1 Le code de retour (%c) n'est pas celui attendu (%c).\n", code(res), e);
 
 	fclose(test);
 
