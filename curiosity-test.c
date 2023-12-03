@@ -61,17 +61,17 @@ int main(int argc, char * argv[]) {
 	if (e == 'N' || e == 'F')
 		fscanf(test, "%i %i\n%c", &x, &y, &o);
 
-	printf("Terrain : %s\n"
-		   "Programme : %s\n"
-		   "Nombre de pas : %i\n"
-		   "Fin attendue : %c\n",
-		   fterrain, fprog, pas_max, e);
-	if (e == 'N' || e == 'F')
-		printf("X : %i\n"
-			   "Y : %i\n"
-			   "Orientation : %c\n",
-			   x, y, o);
-	printf("\n");
+/*	printf("Terrain : %s\n"*/
+/*		   "Programme : %s\n"*/
+/*		   "Nombre de pas : %i\n"*/
+/*		   "Fin attendue : %c\n",*/
+/*		   fterrain, fprog, pas_max, e);*/
+/*	if (e == 'N' || e == 'F')*/
+/*		printf("X : %i\n"*/
+/*			   "Y : %i\n"*/
+/*			   "Orientation : %c\n",*/
+/*			   x, y, o);*/
+/*	printf("\n");*/
 
   gestion_erreur_terrain(
 		initialise_environnement(&envt, fterrain), true);
@@ -79,9 +79,9 @@ int main(int argc, char * argv[]) {
 		lire_programme(&prog, fprog), true);
 
 	for (int i = 0; i < pas_max && res == OK_ROBOT; i++) {
-		printf("Étape n°%i\n", i+1);
+		// printf("Étape n°%i\n", i+1);
 		res = exec_pas(&prog, &envt, &etat);
-		afficher_envt(&envt);
+		// afficher_envt(&envt);
 	}
 
 	if (e == code(res)) {

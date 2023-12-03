@@ -12,6 +12,10 @@ def test_terrain(executable, folder, filename):
 	if filename.startswith("test"):
 		out = getoutput(f"./{executable} {folder}/{filename}").split("\n")
 		print(f"Test {filename}", GREEN+"[PASS]"+RESET if (filename[-1] == out[1][0] or filename[-1] == out[0][0]) else RED+"[FAIL]"+RESET)
+	elif executable.startswith("curiosity-test") and len(executable) == 15:
+		out = getoutput(f"./{executable} {folder}/{filename}")
+		#print(out)
+		print(f"Test {filename}", GREEN+"[PASS]"+RESET if (filename[-6] == out[0]) else RED+"[FAIL]"+RESET)
 
 print(YELLOW+"##### Terrains corrects #####"+RESET)
 for test in listdir("Terrains_Corrects"):
@@ -24,3 +28,10 @@ for test in listdir("Terrains_Incorrects"):
 print(YELLOW+"#### Tests de curiosity #####"+RESET)
 for test in listdir("Curiosity_Tests"):
 	test_terrain("curiosity-test", "Curiosity_Tests", test)
+
+print(YELLOW+"#### Tests de interprete[i] #####"+RESET)
+for i in range(10):
+	print(YELLOW+f"Tests de interprete{str(i)}"+RESET)
+	for test in listdir("Curiosity_Tests"):
+		getoutput(f"make curiosity-test{str(i)}")
+		test_terrain(f"curiosity-test{str(i)}", "Curiosity_Tests", test)
