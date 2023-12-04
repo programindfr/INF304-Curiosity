@@ -1,6 +1,5 @@
-
 #include "environnement.h"
-
+#include "observateur.h"
 #include <stdio.h>
 
 /* Initialise l'environnement envt :
@@ -28,6 +27,7 @@ erreur_terrain initialise_environnement(Environnement *envt,
 }
 
 resultat_deplacement avancer_envt(Environnement *envt) {
+  observateur(ActionAvancer);
   int x, y; // Position devant le robot
 
   // Récupérer la position devant le robot
@@ -54,10 +54,16 @@ resultat_deplacement avancer_envt(Environnement *envt) {
 }
 
 /* Tourner le robot à gauche */
-void gauche_envt(Environnement *envt) { tourner_a_gauche(&(envt->r)); }
+void gauche_envt(Environnement *envt) {
+  observateur(ActionGauche);
+  tourner_a_gauche(&(envt->r));
+}
 
 /* Tourner le robot à droite */
-void droite_envt(Environnement *envt) { tourner_a_droite(&(envt->r)); }
+void droite_envt(Environnement *envt) { 
+  observateur(ActionDroite);
+  tourner_a_droite(&(envt->r)); 
+}
 
 /* Effectuer une mesure
    Paramètre d : la direction de la mesure
@@ -77,6 +83,8 @@ void droite_envt(Environnement *envt) { tourner_a_droite(&(envt->r)); }
      3 erreur (valeur du paramètre incorrect)
  */
 int mesure_envt(Environnement *envt, int d) {
+  observateur(ActionMesurer);
+
   int x, y;   // Position courante du robot
   int dx, dy; // Direction du robot
   int mx, my; // Position de la mesure

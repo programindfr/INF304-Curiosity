@@ -2,7 +2,8 @@ CC = gcc -Wall
 
 PROGRAMMES = test_terrain test_robot robot_terrain \
 			 curiosity-test curiosity-perf \
-			 test_generation_terrains
+			 test_generation_terrains \
+			 curiosity-obs
 
 all: $(PROGRAMMES)
 
@@ -23,7 +24,7 @@ robot.o: robot.c robot.h
 
 terrain.o: terrain.c terrain.h
 
-environnement.o: environnement.c environnement.h robot.h terrain.h
+environnement.o: environnement.c environnement.h robot.h terrain.h observateur.h
 
 programme.o: programme.c programme.h type_pile.h
 
@@ -46,6 +47,11 @@ test_generation_terrains.o: test_generation_terrains.c generation_terrains.h \
 
 curiosity-perf.o: curiosity-perf.c generation_terrains.h terrain.h robot.h
 
+observateur.o: observateur.c observateur.h
+
+curiosity-obs.o: curiosity-obs.c environnement.h interprete.h programme.h \
+	robot.h observateur.h
+
 ######################################################################
 #                       Règles d'édition de liens                    #
 ######################################################################
@@ -60,23 +66,30 @@ robot_terrain: robot_terrain.o terrain.o robot.o
 	$(CC) $^ -o $@
 
 curiosity: curiosity.o environnement.o programme.o interprete.o \
-	robot.o terrain.o type_pile.o
+	robot.o terrain.o type_pile.o observateur.o
 	$(CC) $^ -o $@
 
 curiosity-test: curiosity-test.o environnement.o programme.o interprete.o \
-	robot.o terrain.o type_pile.o
+	robot.o terrain.o type_pile.o observateur.o
 	$(CC) $^ -o $@
 
 curiosity-test%: curiosity-test.o environnement.o programme.o interprete%.o \
-	robot.o terrain.o type_pile.o
+	robot.o terrain.o type_pile.o observateur.o
 	$(CC) $^ -o $@
 
-test_generation_terrains: test_generation_terrains.o generation_terrains.o terrain.o robot.o
+test_generation_terrains: test_generation_terrains.o generation_terrains.o \
+	terrain.o robot.o
 	$(CC) $^ -o $@
 
 curiosity-perf: curiosity-perf.o generation_terrains.o terrain.o robot.o \
-	environnement.o interprete.o type_pile.o programme.o
+	environnement.o interprete.o type_pile.o programme.o observateur.o
 	$(CC) $^ -o $@
 
-clean:
+curiosity-obs: curiosity-obs.o environnement.o interprete.o programme.o \
+	robot.o observateur.o type_pile.o terrain.o
+
+clean_curiosity-test:
+	rm -f curiosity-test?
+
+clean: clean_curiosity-test
 	rm -f $(PROGRAMMES) *.o
